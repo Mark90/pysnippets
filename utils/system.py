@@ -14,8 +14,8 @@ def get_processor_name():
         return b_cpu_details.decode()
     elif platform.system() == "Linux":
         command = "cat /proc/cpuinfo"
-        all_info = subprocess.check_output(command.split(' '), shell=True).strip()
-        for line in all_info.split("\n"):
+        all_info = subprocess.check_output(command.split(' ')).strip()
+        for line in all_info.decode().split("\n"):
             if "model name" in line:
                 return re.sub(".*model name.*:", "", line, 1)
     return ""

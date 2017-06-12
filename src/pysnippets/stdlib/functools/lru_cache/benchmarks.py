@@ -6,7 +6,10 @@ import platform
 import timeit
 from datetime import datetime
 from functools import lru_cache
-from utils import system
+import requests
+import flask
+
+from pysnippets.utils import system
 
 DATA = list(range(1, 100))
 
@@ -56,6 +59,7 @@ def do_calc(func, input):
 
 
 if __name__ == "__main__":
+    # TODO create reusable benchmark module
     setupstr = """from benchmarks import do_calc, {method} as calc_method
 input = {repetitiveness} * list(range({inputsize}))"""
     timeit_repetitions = 1000
